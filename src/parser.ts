@@ -2,7 +2,11 @@
  * A command parser for `DiscordBotBuilder`.
  */
 export class CommandParser {
-  constructor(private prefix: string) {}
+  constructor(private prefix: string) {
+    if (prefix === '') {
+      throw new Error('Command prefix must not be an empty string');
+    }
+  }
 
   /**
    * Parses a command string with given prefix to an array of strings.
