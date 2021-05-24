@@ -15,18 +15,8 @@ export class DiscordBotBuilder {
   private events: Map<Event, Callback> = new Map();
   private commands: Map<string, CommandCallback> = new Map();
 
-  constructor(private prefix: string = '!') {
+  constructor(prefix: string = '!') {
     this.parser = new CommandParser(prefix);
-  }
-
-  /**
-   * Sets the bot's command prefix
-   * (the default one is `!`).
-   */
-  cmdPrefix(prefix: string): DiscordBotBuilder {
-    this.prefix = prefix;
-
-    return this;
   }
 
   /**
