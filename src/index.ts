@@ -30,6 +30,15 @@ export class DiscordBotBuilder {
   }
 
   /**
+   * Registers a command that performs the given `callback`.
+   */
+  cmd(command: string, callback: CommandCallback): DiscordBotBuilder {
+    this.commands.set(command, callback);
+
+    return this;
+  }
+
+  /**
    * Builds a Discord.js's `Discord.Client` instance
    * from given properties.
    */
