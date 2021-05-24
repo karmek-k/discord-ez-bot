@@ -3,7 +3,7 @@ import Discord from 'discord.js';
 import { CommandParser } from './parser';
 
 type Callback = () => any;
-type CommandCallback = (msg: Discord.Message, args: string[]) => void;
+type CommandCallback = (msg: Discord.Message, args?: string[]) => void;
 type Event = keyof Discord.ClientEvents;
 
 /**
@@ -34,6 +34,17 @@ export class DiscordBotBuilder {
    */
   cmd(command: string, callback: CommandCallback): DiscordBotBuilder {
     this.commands.set(command, callback);
+
+    return this;
+  }
+
+  /**
+   * Defines what is done when the bot is ready.
+   * 
+   * This method is essentially a wrapper for the `on` method.
+   */
+  whenReady(callback: Callback): DiscordBotBuilder {
+    this.on('ready', callback);
 
     return this;
   }
