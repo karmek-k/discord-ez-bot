@@ -1,15 +1,23 @@
 import Discord from 'discord.js';
 
+import { CommandParser } from './parser';
+
 type Callback = () => any;
+type CommandCallback = (args: string[]) => void;
 type Event = keyof Discord.ClientEvents;
 
 /**
  * The main bot builder.
  */
 export class DiscordBotBuilder {
-  private prefix = '!';
+  private parser: CommandParser;
 
   private events: Map<Event, Callback> = new Map();
+  private commands: Map<string, CommandCallback> = new Map();
+
+  constructor(private prefix: string = '!') {
+    this.parser = new CommandParser(prefix);
+  }
 
   /**
    * Sets the bot's command prefix
@@ -41,7 +49,7 @@ export class DiscordBotBuilder {
     this.events.forEach((cb, e) => {
       bot.on(e, cb);
     });
-    
+
     return bot;
   }
 }
