@@ -3,7 +3,7 @@ import Discord from 'discord.js';
 import { CommandParser } from './parser';
 
 type Callback = () => any;
-type CommandCallback = (args: string[]) => void;
+type CommandCallback = (msg: Discord.Message, args: string[]) => void;
 type Event = keyof Discord.ClientEvents;
 
 /**
@@ -47,6 +47,22 @@ export class DiscordBotBuilder {
 
     this.events.forEach((cb, e) => {
       bot.on(e, cb);
+    });
+
+    // handle messages
+    bot.on('message', msg => {
+      const parsed = this.parser.parse(msg.content);
+
+      if (!parsed || msg.author.bot) {
+        return;
+      }
+
+      const cb = this.commands.get(parsed[0]);
+
+      // check if the command is defined
+      if (cb) {
+        cb(msg, parsed.slice(1));
+      }
     });
 
     return bot;
