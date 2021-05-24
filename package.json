@@ -1,0 +1,9 @@
+{
+  "name": "discord-ez-bot",
+  "version": "1.0.0",
+  "description": "Super simple Discord bot framework, based on discord.js",
+  "main": "dist/index.js",
+  "repository": "https://github.com/karmek-k/discord-ez-bot.git",
+  "author": "Bartosz Gleń",
+  "license": "MIT"
+}
