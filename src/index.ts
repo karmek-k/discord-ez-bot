@@ -40,7 +40,7 @@ export class DiscordBotBuilder {
 
   /**
    * Defines what is done when the bot is ready.
-   * 
+   *
    * This method is essentially a wrapper for the `on` method.
    */
   whenReady(callback: Callback): DiscordBotBuilder {

@@ -17,8 +17,8 @@ export class CommandParser {
     }
 
     const tokens = str
-      .substr(this.prefix.length)  // remove the command prefix
-      .split(' ');  // tokenize
+      .substr(this.prefix.length) // remove the command prefix
+      .split(' '); // tokenize
 
     // return null if the string was just a command prefix
     return tokens.length > 0 ? tokens : null;
