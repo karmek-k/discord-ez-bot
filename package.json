@@ -20,5 +20,11 @@
     "run": "ts-node src/index.ts",
     "watch": "nodemon -x 'ts-node src/index.ts' -e 'ts,js,json'",
     "build": "tsc"
-  }
+  },
+  "keywords": [
+    "discord",
+    "wrapper",
+    "bot",
+    "framework"
+  ]
 }
